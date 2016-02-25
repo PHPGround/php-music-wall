@@ -4,4 +4,4 @@
   </head>
   <body>
     <!-- <h1><?php echo $title; ?></h1> -->
-    <h4>Welcome, User</h4>
+    <h4 class="text-right user-welcome">Welcome, User</h4>
