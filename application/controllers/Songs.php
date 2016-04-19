@@ -5,6 +5,7 @@ class Songs extends CI_Controller{
 
   public function __construct(){
     parent::__construct();
+    $this->load->model('songs_model');
     $this->load->helper('url_helper');
   }
 
@@ -21,12 +22,19 @@ class Songs extends CI_Controller{
   //   $this->load->view('templates/footer', $data);
   // }
 
+
+  //for default page:
   public function index()
   {
     $data['title'] = "Song Homepage";
+
+    $data['songs'] = $this->songs_model->get_songs();
+
     $this->load->view('layout');
     $this->load->view('templates/header', $data);
     $this->load->view('songs/index', $data);
     $this->load->view('templates/footer', $data);
   }
+
+  
 }
