@@ -6,8 +6,6 @@
       $this->load->database();
     }
 
-  }
-
     //to get a song from database:
     public function get_songs($id = NULL){
       if ($id === NULL){
@@ -29,3 +27,4 @@
 
       return $this->db->insert('songs', $data);
     }
+  }

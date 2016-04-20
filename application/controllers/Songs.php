@@ -36,5 +36,26 @@ class Songs extends CI_Controller{
     $this->load->view('templates/footer', $data);
   }
 
-  
+  public function create()
+  {
+    $this->load->view('layout');
+    $this->load->view('templates/header', $data);
+    $this->load->view('songs/create', $data);
+    $this->load->view('templates/footer', $data);
+
+    $this->load->helper('form');
+    $this->load->library('form_validation');
+
+    $this->form_validation->set_rules('track', 'Track', 'required');
+    $this->form_validation->set_rules('artist', 'Artist', 'required');
+    $this->form_validation->set_rules('link', 'Link to Song', 'required');
+
+    if ($this->form_validation->run() === FALSE){
+      $this->load->view('songs/create');
+    }else{
+      $this->songs_model->set_songs();
+      redirect('songs/index');
+    }
+
+  }
 }
